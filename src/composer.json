@@ -3,5 +3,8 @@
     "classmap": [
       "./"
     ]
+  },
+  "require": {
+    "ext-pdo": "*"
   }
 }
