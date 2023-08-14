@@ -8,3 +8,6 @@
         <li>Auncun hike trouvé.</li>
     <?php endif; ?>
 </ul>
+<?php if (isset($_SESSION['hiking_user'])): ?>
+    <a href="/addHike" role="button">Ajouter un Hike</a>
+<?php endif; ?>

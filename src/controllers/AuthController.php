@@ -9,6 +9,9 @@ class AuthController extends User
 {
     public function showRegisterForm(): void
     {
+        if (isset($_GET['error_value'])) {
+            $error_value = htmlspecialchars($_GET['error_value']);
+        }
         include_once "views/layout/header.view.php";
         include_once "views/register.view.php";
         include_once "views/layout/footer.view.php";
@@ -147,5 +150,17 @@ class AuthController extends User
     }catch (Exception $e){
         header('Location: /login?error_value=' . $e->getMessage());
     }
+    }
+
+    public function showUserProfile(): void
+    {
+        $user = User::getUserById($_SESSION['hiking_user']['uid']);
+
+        if (isset($_GET['modify'])) {
+            $modify = true;
+        }
+        include_once "views/layout/header.view.php";
+        include_once "views/profile.view.php";
+        include_once "views/layout/footer.view.php";
     }
 }

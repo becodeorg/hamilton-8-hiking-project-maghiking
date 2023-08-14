@@ -40,6 +40,9 @@ class Router
                 $authController = new AuthController();
                 $authController->logout();
                 break;
+            case "/profile":
+                $authController = new AuthController();
+                $authController->showUserProfile();
         }
     }
 }
