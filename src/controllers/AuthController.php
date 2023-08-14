@@ -94,11 +94,58 @@ class AuthController extends User
 
     public function showLoginForm(): void
     {
-
+        if(isset($_GET['error_value']))
+        {
+            $error_value = htmlspecialchars($_GET['error_value']);
+        }
+        include_once "views/layout/header.view.php";
+        include_once "views/login.view.php";
+        include_once "views/layout/footer.view.php";
     }
 
     public function loginVerification(array $post): void
     {
+        try{
+        // check la connexion d'un utilisateur
+        // check si les champs ne sont pas vide
+        // 101 => si les champs son vide
+        // 201 => si l'email n'est pas valide
+        // 202 => si le mot de passe n'est pas valide
+        // 500 => error serveur
 
+        if(empty($_POST['email']) || empty($post['password'])){
+            throw new Exception("101");
+        }
+        //on filtre l'email
+        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+            throw new Exception('201');
+        }
+        // on cherche l'user associé à l'email
+        $user = User::getUserByEmail($email);
+        if (empty($user)){
+            throw new Exception("102");
+        }
+
+        if (!password_verify($post['password'], $user['password'])) {
+            throw new exception("202");
+        }
+        if (!$resultArray["bool"]) {
+            throw new Exception("500");
+        }
+
+        unset($_SESSION['hiking_user']);
+        $_SESSION['hiking_user'] = array(
+            "uid" => $user['uid'],
+            "nickname" => $nickname,
+            "firstname" => $firstname,
+            "lastname" => $lastname,
+            "email" => $email
+        );
+
+        header('Location: /');
+    }catch (Exception $e){
+        header('Location: /login?error_value=' . $e->getMessage());
+    }
     }
 }
