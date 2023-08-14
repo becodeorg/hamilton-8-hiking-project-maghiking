@@ -2,6 +2,8 @@
 
 namespace core;
 
+use controllers\HikeController;
+
 class Router
 {
     public function route(string $uri_path): void
@@ -10,7 +12,8 @@ class Router
             case "/":
             case "/index":
             case "/home":
-                echo "It works!";
+                $hikeController = new HikeController();
+                $hikeController->showHike();
                 break;
         }
     }

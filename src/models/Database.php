@@ -3,6 +3,7 @@ namespace models;
 
 use PDO;
 use PDOStatement;
+use Exception;
 
 class Database
 {
@@ -10,17 +11,21 @@ class Database
 
     public function __construct()
     {
-        $this->pdo = new PDO(
-            "mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'),
-            getenv('DB_USERNAME'),
-            getenv('DB_PASSWORD')
-        );
+        try {
+            $this->pdo = new PDO(
+                "mysql:host=" . getenv('DB_HOST') . ";dbname=" . getenv('DB_DATABASE'),
+                getenv('DB_USERNAME'),
+                getenv('DB_PASSWORD')
+            );
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
 
         $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function query(string $sql, array $param): PDOStatement
+    public function query(string $sql, array $param = []): PDOStatement
     {
         $stmt = $this->pdo->prepare($sql);
         foreach ($param as $key => $value) {
@@ -36,7 +41,7 @@ class Database
         return $stmt;
     }
 
-    public function exec(string $sql, array $param): bool
+    public function exec(string $sql, array $param = []): bool
     {
         $stmt = $this->pdo->prepare($sql);
 

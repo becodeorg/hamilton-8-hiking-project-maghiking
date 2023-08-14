@@ -6,6 +6,7 @@ services:
         volumes:
             - './src:/application'
             - dbdata:/var/lib/mysql
+            - './scripts/init.sql:/docker-entrypoint-initdb.d/1.sql'
         environment:
             - MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}
             - MYSQL_DATABASE=${DB_DATABASE}
