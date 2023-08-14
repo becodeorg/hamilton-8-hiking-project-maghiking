@@ -2,6 +2,7 @@
 
 namespace core;
 
+use controllers\AuthController;
 use controllers\HikeController;
 
 class Router
@@ -14,6 +15,30 @@ class Router
             case "/home":
                 $hikeController = new HikeController();
                 $hikeController->showHike();
+                break;
+            case "/hikes":
+                $hikeController = new HikeController();
+                $hikeController->showHikesByTag(htmlspecialchars($_GET['tid']));
+                break;
+            case "/login":
+                $authController = new AuthController();
+                if (empty($_POST)) {
+                    $authController->showLoginForm();
+                } else {
+                    $authController->loginVerification($_POST);
+                }
+                break;
+            case "/register":
+                $authController = new AuthController();
+                if (empty($_POST)) {
+                    $authController->showRegisterForm();
+                } else {
+                    $authController->registerVerification($_POST);
+                }
+                break;
+            case "/logout":
+                $authController = new AuthController();
+                $authController->logout();
                 break;
         }
     }
