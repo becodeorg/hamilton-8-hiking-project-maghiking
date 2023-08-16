@@ -76,6 +76,7 @@ class HikeController extends Hike
                 ]
             );
 
+            
             if (!$result["bool"]){
                 throw new Exception("500");
             }

@@ -40,8 +40,9 @@ class Hike extends Database
             ];
         } else {
             return ["bool" => false];
-        }
     }
+    }
+
     public function getHikeById($hid) {
 
         $sql = "SELECT * FROM Hikes WHERE hid = :hid";

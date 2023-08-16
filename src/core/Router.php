@@ -51,6 +51,7 @@ class Router
                 } else {
                     $hikeController->creationHikesVerification($_POST);
                 }
+                break;
 
             case "/hike":
                 $hikeController = new HikeController();

@@ -2,11 +2,11 @@
 <form action="#" method="post">
     <fieldset>
         <label for="name">Titre de votre hike</label>
-        <input type="text" name="name" id="name" placeholer="Titre" placeholder="Nom..." required>
+        <input type="text" name="name" id="name" placeholder="Nom..." required>
     </fieldset>
     <fieldset>
         <label for="distance">Distance kilométrique</label>
-        <input type="number" step="0.1" min="0" name="distance" id="distance" placeholder="200" required>
+        <input type="number" step="0.1" min="0" name="distance" id="distance" required>
         <span>km</span>
     </fieldset>
     <fieldset>
@@ -14,8 +14,8 @@
         <input type="time" name="duration" id="duration" required>
     </fieldset>
     <fieldset>
-        <label for="denivele">Dénivelé positif</label>
-        <input type="number" step="0.1" min="0" name="denivele" id="denivele" placeholder="200" required>
+        <label for="elevation_gain">Dénivelé positif</label>
+        <input type="number" step="0.1" min="0" name="elevation_gain" id="elevation_gain" required>
         <span>Mètres</span>
     </fieldset>
     <fieldset>
@@ -24,9 +24,7 @@
     </fieldset>
     <button type="submit">Créer votre Hike</button>
 </form>
-<?php
-    var_dump($_SESSION);
-?>
+
 <?php if (isset($error_value)):
     if ($error_value == "101"): ?>
         <p class="error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
