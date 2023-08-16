@@ -56,5 +56,11 @@ class Hike extends Database
     return Database::exec($sql, ["hid" => $hid]);
     }
 
+    public function updateHikeById(string|int $hid, array $param): bool
+{
+    $sql = "UPDATE Hikes SET name = :name, distance = :distance, duration = :duration, elevation_gain = :elevation_gain, description = :description WHERE hid = :hid";
+    $param['hid'] = $hid;
+    return Database::exec($sql, $param);
+}
 
 }

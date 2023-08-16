@@ -72,9 +72,6 @@ class Router
                     if (isset($_GET['hid'])) {
                         $hikeController = new HikeController();
                         $hikeController->deleteHike(htmlspecialchars($_GET['hid']));
-                    } else {
-                        // Gérer le cas où l'ID de la randonnée n'est pas défini
-                        // Redirection ou affichage d'une erreur par exemple
                     }
                     break;
                 

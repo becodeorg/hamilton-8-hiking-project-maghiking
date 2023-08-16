@@ -106,21 +106,24 @@ class HikeController extends Hike
 
 
     public function deleteHike(string|int $hid): void
-{
-    try {
-        $result = Hike::deleteHikeById($hid);
+    {
+        try {
+            $result = Hike::deleteHikeById($hid);
 
-        if ($result) {
-            header('Location: /'); 
-            exit; 
-        } else {
-            throw new Exception("Erreur lors de la suppression de la randonnée.");
+            if ($result) {
+                header('Location: /'); 
+                exit; 
+            } else {
+                throw new Exception("Erreur lors de la suppression de la randonnée.");
+            }
+        } catch (Exception $e) {
+            header('Location: /?error=' . $e->getMessage());
+            exit;
         }
-    } catch (Exception $e) {
-        header('Location: /?error=' . $e->getMessage());
-        exit;
     }
-}
+
+        
+
 }
 
 

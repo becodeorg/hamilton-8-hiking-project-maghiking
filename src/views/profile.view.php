@@ -14,8 +14,7 @@
                 extract($hike); ?>
                 <li>
                     <a href="/hike?hid=<?= $hid ?>"><?= $name ?></a>
-                    /* Ajout d'une alerte */
-                    <a href="/delete-hike?hid=<?= $hid ?>" onclick="return confirm('Es-tu sûr de vouloir supprimer cette randonnée ?')"><i class="fa-regular fa-trash-can"></i></a>
+                    <a href="/delete-hike?hid=<?= $hid ?>" onclick="return confirm('Etes-vous sûr de supprimer cette randonnée ?')"><i class="fa-regular fa-trash-can"></i></a>
 
                 </li>
             <?php endforeach;
