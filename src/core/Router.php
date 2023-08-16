@@ -4,6 +4,7 @@ namespace core;
 
 use controllers\AuthController;
 use controllers\HikeController;
+use controllers\TagController;
 
 class Router
 {
@@ -50,6 +51,15 @@ class Router
                     $hikeController->showCreationHikes();
                 } else {
                     $hikeController->creationHikesVerification($_POST);
+                }
+                break;
+
+            case "/creationtag":
+                $tagController = new TagController();
+                if (empty($_POST)) {
+                    $tagController->ShowCreationTag();
+                } else {
+                    $tagController->verificationCreationTag()($_POST);
                 }
                 break;
 
