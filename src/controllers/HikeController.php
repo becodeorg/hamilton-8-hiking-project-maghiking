@@ -35,4 +35,9 @@ class HikeController extends Hike
     {
         
     }
+
+    public function showUpdateHike(): void
+    {
+
+    }
 }

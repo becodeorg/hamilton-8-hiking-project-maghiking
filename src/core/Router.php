@@ -52,6 +52,27 @@ class Router
                     $hikeController->creationHikesVerification($_POST);
                 }
                 break;
+            case "/modify":
+                if (!empty($_GET)) {
+                    if ($_GET['value'] == "account") {
+                        $authController = new AuthController();
+                        if (empty($_POST)) {
+                            $authController->showUpdateProfile();
+                        } else {
+                            $authController->updateProfileVerification($_POST);
+                        }
+                    } else if ($_GET['value'] == "hike") {
+                        $hikeController = new HikeController();
+                        if (empty($_POST)) {
+                            $hikeController->showUpdateHike();
+                        } else {
+                            $hikeController->updateHikeVerification($_POST);
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
         }
     }
 }

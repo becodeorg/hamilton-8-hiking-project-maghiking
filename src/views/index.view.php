@@ -9,5 +9,5 @@
     <?php endif; ?>
 </ul>
 <?php if (isset($_SESSION['hiking_user'])): ?>
-    <a href="/addHike" role="button">Ajouter un Hike</a>
+    <a href="/creation" role="button">Ajouter un Hike</a>
 <?php endif; ?>

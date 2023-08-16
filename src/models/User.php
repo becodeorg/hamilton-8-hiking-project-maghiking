@@ -71,4 +71,22 @@ class User extends Database
         $result = Database::query($sql, ["uid" => $uid]);
         return $result->fetchAll();
     }
+
+    public function updateUserFirstnameAndLastname(array $param): bool
+    {
+        $sql = "UPDATE Users SET firstname = :firstname AND lastname = :lastname WHERE uid = :uid";
+        return Database::exec($sql, $param);
+    }
+
+    public function updateUserFirstname(array $param): bool
+    {
+        $sql = "UPDATE Users SET firstname = :firstname WHERE uid = :uid";
+        return Database::exec($sql, $param);
+    }
+
+    public function updateUserLastname(array $param): bool
+    {
+        $sql = "UPDATE Users SET lastname = :lastname WHERE uid = :uid";
+        return Database::exec($sql, $param);
+    }
 }
