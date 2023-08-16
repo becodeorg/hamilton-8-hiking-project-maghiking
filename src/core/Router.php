@@ -42,7 +42,11 @@ class Router
                 break;
             case "/creation":
                 $hikeController = new HikeController();
-                $hikeController->showCreationHikes();
+                if (empty($_POST)) {
+                    $hikeController->showCreationHikes();
+                } else {
+                    $hikeController->creationHikesVerification($_POST);
+                }
                 break;
         }
     }
