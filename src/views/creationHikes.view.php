@@ -10,8 +10,8 @@
         <span>km</span>
     </fieldset>
     <fieldset>
-        <label for="duree">Durée</label>
-        <input type="time" name="duree" id="duree" required>
+        <label for="duration">Durée</label>
+        <input type="time" name="duration" id="duration" required>
     </fieldset>
     <fieldset>
         <label for="denivele">Dénivelé positif</label>
@@ -24,3 +24,14 @@
     </fieldset>
     <button type="submit">Créer votre Hike</button>
 </form>
+<?php
+    var_dump($_SESSION);
+?>
+<?php if (isset($error_value)):
+    if ($error_value == "101"): ?>
+        <p class="error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
+    <?php elseif ($error_value == "500"): ?>
+        <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+        <?php else: echo $error_value; ?>
+        <?php endif;
+endif; ?>

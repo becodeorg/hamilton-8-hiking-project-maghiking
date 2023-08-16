@@ -4,10 +4,12 @@ namespace models;
 
 class User extends Database
 {
+
     /**
      * @param string|int $uid
      * @return array|bool
      */
+
     public function getUserById(string|int $uid): array|bool
     {
         $sql = "SELECT * FROM Users WHERE uid = :uid";
@@ -15,10 +17,12 @@ class User extends Database
         return $result->fetch();
     }
 
+
     /**
      * @param string $email
      * @return array|bool
      */
+
     public function getUserByEmail(string $email): array|bool
     {
         $sql = "SELECT * FROM Users WHERE email = :email";
@@ -30,6 +34,7 @@ class User extends Database
      * @param array $param
      * @return array|bool
      */
+
     public function getUserByNickNameAndEmail(array $param): array|bool
     {
         $sql = "SELECT * FROM Users WHERE nickname = :nickname OR email = :email";
@@ -41,6 +46,8 @@ class User extends Database
      * @param array $param
      * @return array|bool
      */
+
+
     public function insertNewUser(array $param): array|bool
     {
         $sql = "

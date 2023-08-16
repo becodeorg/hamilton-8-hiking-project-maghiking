@@ -10,7 +10,9 @@
     </fieldset>
     <fieldset>
         <input type="text" name="nickname" id="nickname" placeholder="jSmith03" required>
+
         <label for="nickname">Pseudo</label>
+
     </fieldset>
     <fieldset>
         <input type="email" name="email" id="email" placeholder="j.smith@gmail.com" required>
@@ -33,3 +35,4 @@
         <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
     <?php endif; ?>
 <?php endif; ?>
+
