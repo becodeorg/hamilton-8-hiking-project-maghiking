@@ -40,6 +40,11 @@ class Router
                 $authController = new AuthController();
                 $authController->logout();
                 break;
+
+            case "/hike":
+                $hikeController = new HikeController();
+                $hikeController->showHikeDetails(htmlspecialchars($_GET["hid"]));
+                break;
         }
     }
 }
