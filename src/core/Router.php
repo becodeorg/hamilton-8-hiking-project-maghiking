@@ -40,6 +40,10 @@ class Router
                 $authController = new AuthController();
                 $authController->logout();
                 break;
+            case "/creation":
+                $hikeController = new HikeController();
+                $hikeController->showCreationHikes();
+                break;
         }
     }
 }

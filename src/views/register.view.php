@@ -30,4 +30,5 @@
         <p class="error">Cette email n'est pas valide.</p>
     <?php elseif ($error_value == "500"): ?>
         <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
-    <?php endif; ?>
+        <?php endif;
+endif; ?>
