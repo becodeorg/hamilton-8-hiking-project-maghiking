@@ -4,12 +4,24 @@ namespace models;
 
 class User extends Database
 {
+
+    /**
+     * @param string|int $uid
+     * @return array|bool
+     */
+
     public function getUserById(string|int $uid): array|bool
     {
         $sql = "SELECT * FROM Users WHERE uid = :uid";
         $result = Database::query($sql, ["uid" => $uid]);
         return $result->fetch();
     }
+
+
+    /**
+     * @param string $email
+     * @return array|bool
+     */
 
     public function getUserByEmail(string $email): array|bool
     {
@@ -18,12 +30,23 @@ class User extends Database
         return $result->fetch();
     }
 
+    /**
+     * @param array $param
+     * @return array|bool
+     */
+
     public function getUserByNickNameAndEmail(array $param): array|bool
     {
         $sql = "SELECT * FROM Users WHERE nickname = :nickname OR email = :email";
         $result = Database::query($sql, $param);
         return $result->fetch();
     }
+
+    /**
+     * @param array $param
+     * @return array|bool
+     */
+
 
     public function insertNewUser(array $param): array|bool
     {
@@ -44,4 +67,17 @@ class User extends Database
             "uid" => Database::lastInsertId()
         ];
     }
+
+
+    /**
+     * @param string|int $uid
+     * @return array|bool
+     */
+    public function getHikeByUserId(string|int $uid): array|bool
+    {
+        $sql = "SELECT * FROM Hikes WHERE uid = :uid";
+        $result = Database::query($sql, ["uid" => $uid]);
+        return $result->fetchAll();
+    }
+    
 }

@@ -25,6 +25,7 @@ class HikeController extends Hike
         include_once "views/layout/footer.view.php";
     }
 
+
     public function showCreationHikes(): void
     {
         if(isset($_GET['error_value']))
@@ -88,4 +89,14 @@ class HikeController extends Hike
             header('Location: /creation?error_value=' . $e->getMessage());
         }
     }
+
+    public function showHikeDetails(string|int $hid) {
+
+        $hikeDetails = Hike::getHikeById($hid);
+
+        include_once "views/layout/header.view.php";
+        include_once "views/hike.view.php";
+        include_once "views/layout/footer.view.php";
+    }
+
 }

@@ -1,3 +1,4 @@
+<h1>Inscription</h1>
 <form action="#" method="post">
     <fieldset>
         <input type="text" name="firstname" id="firstname" placeholder="John" required>
@@ -9,7 +10,9 @@
     </fieldset>
     <fieldset>
         <input type="text" name="nickname" id="nickname" placeholder="jSmith03" required>
-        <label for="nickname">Surnom</label>
+
+        <label for="nickname">Pseudo</label>
+
     </fieldset>
     <fieldset>
         <input type="email" name="email" id="email" placeholder="j.smith@gmail.com" required>
@@ -30,5 +33,6 @@
         <p class="error">Cette email n'est pas valide.</p>
     <?php elseif ($error_value == "500"): ?>
         <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
-        <?php endif;
-endif; ?>
+    <?php endif; ?>
+<?php endif; ?>
+

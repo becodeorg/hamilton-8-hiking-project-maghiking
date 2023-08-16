@@ -40,6 +40,10 @@ class Router
                 $authController = new AuthController();
                 $authController->logout();
                 break;
+            case "/profile":
+                $authController = new AuthController();
+                $authController->showUserProfile();
+                break;
             case "/creation":
                 $hikeController = new HikeController();
                 if (empty($_POST)) {
@@ -47,6 +51,11 @@ class Router
                 } else {
                     $hikeController->creationHikesVerification($_POST);
                 }
+
+            case "/hike":
+                $hikeController = new HikeController();
+                $hikeController->showHikeDetails(htmlspecialchars($_GET["hid"]));
+
                 break;
         }
     }
