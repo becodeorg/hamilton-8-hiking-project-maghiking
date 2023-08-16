@@ -11,7 +11,7 @@
 </ul>
 <?php if (isset($_SESSION['hiking_user'])): ?>
     <a href="/creation" role="button">Ajouter un Hike</a>
-<?php endif; ?>
+<?php else: ?>
 
         <li>Aucun hike trouvé.</li>
     <?php endif; ?>
