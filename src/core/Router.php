@@ -51,6 +51,11 @@ class Router
                 } else {
                     $hikeController->creationHikesVerification($_POST);
                 }
+
+            case "/hike":
+                $hikeController = new HikeController();
+                $hikeController->showHikeDetails(htmlspecialchars($_GET["hid"]));
+
                 break;
         }
     }

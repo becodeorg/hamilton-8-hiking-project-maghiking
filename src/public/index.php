@@ -10,4 +10,5 @@ $router->route(
         $_SERVER['REQUEST_URI'],
         PHP_URL_PATH
     )
+
 );

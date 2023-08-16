@@ -24,6 +24,7 @@ class HikeController extends Hike
         include_once "views/layout/footer.view.php";
     }
 
+
     public function showCreationHikes(): void
     {
         include_once "views/layout/header.view.php";
@@ -35,4 +36,14 @@ class HikeController extends Hike
     {
         
     }
+
+    public function showHikeDetails(string|int $hid) {
+
+        $hikeDetails = Hike::getHikeById($hid);
+
+        include_once "views/layout/header.view.php";
+        include_once "views/hike.view.php";
+        include_once "views/layout/footer.view.php";
+    }
+
 }

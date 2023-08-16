@@ -24,10 +24,14 @@ class Database
     public function query(string $sql, array $param = []): PDOStatement
     {
         $stmt = $this->pdo->prepare($sql);
+
         // boucle sur mes params
         foreach ($param as $key => $value) {
 
             // verifications du type de mes valeur
+
+        foreach ($param as $key => $value) {
+
             if (gettype($value) == "integer") {
                 $stmt->bindParam($key, $value, PDO::PARAM_INT);
             } else if (gettype($value) == "boolean") {

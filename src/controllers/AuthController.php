@@ -161,4 +161,91 @@ class AuthController extends User
         include_once "views/profile.view.php";
         include_once "views/layout/footer.view.php";
     }
+
+    public function showUpdateProfile(): void
+    {
+        if(isset($_GET['error_value'])) {
+            $error_value = htmlspecialchars($_GET['error_value']);
+        }
+        if (isset($_GET['modify'])) {
+            $modify = htmlspecialchars($_GET['modify']);
+        }
+        include_once "views/layout/header.view.php";
+        include_once "views/updateProfile.view.php";
+        include_once "views/layout/footer.view.php";
+    }
+
+    public function updateProfileVerification(array $post): void
+    {
+        try {
+            // check la modification des informations d'un utilisateur
+            // 101 => si les champs son vide
+            // 202 => si le mot de passe n'est pas valide
+            // 500 => error serveur
+            if (
+                empty($post['firstname']) ||
+                empty($post['lastname']) ||
+                empty($post['password'])
+                ) {
+                throw new Exception("101");
+            }
+
+            $firstname = htmlspecialchars($post['firstname']);
+            $lastname = htmlspecialchars($post['lastname']);
+
+            $user = User::getUserById($_SESSION['hiking_user']['uid']);
+            if (!$user) {
+                throw new Exception("500");
+            }
+            if ($firstname != $user['firstname']) {
+                if ($lastname != $user['lastname']) {
+                    $result = User::updateUserFirstnameAndLastname(
+                        [
+                            "firstname" => $firstname,
+                            "lastname" => $lastname,
+                            "uid" => $_SESSION['hiking_user']['uid']
+                        ]
+                    );
+                } else {
+                    $result = User::updateUserFirstname(
+                        [
+                            "firstname" => $firstname,
+                            "uid" => $_SESSION['hiking_user']['uid']
+                        ]
+                    );
+                }
+            } else {
+                if ($lastname != $user['lastname']) {
+                    $result = User::updateUserLastname(
+                        [
+                            "lastname" => $lastname,
+                            "uid" => $_SESSION['hiking_user']['uid']
+                        ]
+                    );
+                } else {
+                    throw new Exception("301");
+                }
+            }
+
+            if (!password_verify($post['password'], $user['password'])) {
+                throw new Exception("202");
+            }
+            if (!$result) {
+                throw new Exception("500");
+            }
+
+            unset($_SESSION['hiking_user']);
+            $_SESSION['hiking_user'] = array(
+                "uid" => $user['uid'],
+                "nickname" => $user['nickname'],
+                "firstname" => $firstname,
+                "lastname" => $lastname,
+                "email" => $user['email']
+            );
+
+            header('Location: /modify?value=account&modify=true');
+        } catch (Exception $e) {
+            header('Location: /modify?value=account&error_value=' . $e->getMessage());
+        }
+    }
 }
