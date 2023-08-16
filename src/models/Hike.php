@@ -6,7 +6,7 @@ class Hike extends Database
 {
     public function getAllHike(): array|bool
     {
-        $sql = "SELECT * FROM Hikes LIMIT 20";
+        $sql = "SELECT * FROM Hikes LIMIT 30";
         $result = Database::query($sql);
         return $result->fetchAll();
     }

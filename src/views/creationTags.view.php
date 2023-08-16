@@ -1,8 +1,9 @@
-<form action="#" method="post">
-    <label for="name">Créer votre #Tag</label>
-    <input type="text" name="name" id="nametag">
+<form action="#" method="POST">
+    <label for="name">Tag :</label>
+    <input type="text" id="tag_name" name="name" required>
     <button type="submit">Valider</button>
 </form>
+
 
 <?php if (isset($error_value)):
     if ($error_value == "101"): ?>

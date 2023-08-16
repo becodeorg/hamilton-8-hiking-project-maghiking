@@ -17,8 +17,38 @@ class TagController
         include_once "views/layout/footer.view.php";
     }
 
-    public function verificationCreationTag(): void
+    public function createTag(string $name): bool
     {
-        echo "blabla";
+        $tid = uniqid(); // Génère un ID unique pour le tag
+        $sql = "INSERT INTO Tags (tid, name) VALUES (:tid, :name)";
+        $params = [":tid" => $tid, ":name" => $name];
+
+        return $this->exec($sql, $params);
     }
+
+    public function verificationCreationTag(): void
+{
+    try {
+        if (empty($_POST['name'])) {
+            throw new Exception("101");
+        }
+
+        $name = htmlspecialchars($_POST['name']);
+        $tagModel = new Tag();
+        
+        if ($tagModel->createTag($name)) {
+            header('Location: /');
+            exit();
+        } else {
+            throw new Exception("500");
+        }
+    } catch (Exception $e) {
+        header('Location: /creationTags?error_value=' . $e->getMessage());
+        exit();
+    }
+}
+
+        
+    
+
 }
