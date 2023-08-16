@@ -17,4 +17,28 @@ class Hike extends Database
         $result = Database::query($sql, ["tid" => $tid]);
         return $result->fetchAll();
     }
-}
+
+    public function insertNewHike(array $param): array|bool
+    {
+        $sql = "
+            INSERT INTO
+            Hikes
+            (
+                name, distance, duration, elevation_gain, description, created_at, uid
+            )
+            VALUES
+            (
+                :name, :distance, :duration, :elevation_gain, :description, :created_at, :uid
+            )
+        ";
+        $result = Database::exec($sql, $param);
+        if ($result) {
+            $lastInsertId = Database::lastInsertId();
+            return [
+                "bool" => true,
+                "hid" => $lastInsertId
+            ];
+        } else {
+            return ["bool" => false];
+    }
+    }}
