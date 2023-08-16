@@ -103,4 +103,24 @@ class HikeController extends Hike
         include_once "views/hike.view.php";
         include_once "views/layout/footer.view.php";
     }
+
+
+    public function deleteHike(string|int $hid): void
+{
+    try {
+        $result = Hike::deleteHikeById($hid);
+
+        if ($result) {
+            header('Location: /'); 
+            exit; 
+        } else {
+            throw new Exception("Erreur lors de la suppression de la randonnée.");
+        }
+    } catch (Exception $e) {
+        header('Location: /?error=' . $e->getMessage());
+        exit;
+    }
 }
+}
+
+

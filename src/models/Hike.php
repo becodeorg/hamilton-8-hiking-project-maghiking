@@ -50,4 +50,11 @@ class Hike extends Database
         return $result->fetchAll();
     }
 
+    public function deleteHikeById(string|int $hid): bool
+    {
+    $sql = "DELETE FROM Hikes WHERE hid = :hid";
+    return Database::exec($sql, ["hid" => $hid]);
+    }
+
+
 }
