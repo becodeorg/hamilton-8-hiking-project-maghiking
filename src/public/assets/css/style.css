@@ -73,7 +73,7 @@ form fieldset {
   width: 100%;
   position: relative;
 }
-form fieldset input {
+form fieldset input, form fieldset textarea {
   width: 100%;
   padding: 1em;
   height: 100%;

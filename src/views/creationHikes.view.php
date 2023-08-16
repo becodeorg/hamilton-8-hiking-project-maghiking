@@ -21,7 +21,6 @@
     <fieldset>
         <label for="description">Description</label>
         <textarea cols="20" rows="20" name="description" id="description" placeholder="Description de votre Hike" required></textarea>
-
     </fieldset>
     <button type="submit">Créer votre Hike</button>
 </form>
