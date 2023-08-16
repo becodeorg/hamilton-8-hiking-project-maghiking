@@ -19,9 +19,8 @@
         <span>Mètres</span>
     </fieldset>
     <fieldset>
-        <label for="description" cols="20" rows="20">Description</label>
-        <textarea type="description" name="description" id="description" placeholder="Description de votre Hike" required 
-    style="width: 300px; height: 200px; resize: none; color: white; background-color: black;"></textarea>
+        <label for="description">Description</label>
+        <textarea cols="20" rows="20" name="description" id="description" placeholder="Description de votre Hike" required></textarea>
 
     </fieldset>
     <button type="submit">Créer votre Hike</button>
