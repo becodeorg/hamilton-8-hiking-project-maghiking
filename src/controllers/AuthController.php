@@ -108,57 +108,55 @@ class AuthController extends User
 
     public function loginVerification(array $post): void
     {
-        try{
-        // check la connexion d'un utilisateur
-        // check si les champs ne sont pas vide
-        // 101 => si les champs son vide
-        // 201 => si l'email n'est pas valide
-        // 202 => si le mot de passe n'est pas valide
-        // 500 => error serveur
+        try {
+            // check la connexion d'un utilisateur
+            // check si les champs ne sont pas vide
+            // 101 => si les champs son vide
+            // 201 => si l'email n'est pas valide
+            // 202 => si le mot de passe n'est pas valide
+            // 500 => error serveur
 
-        if(empty($_POST['email']) || empty($post['password'])){
-            throw new Exception("101");
-        }
-        //on filtre l'email
-        $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-            throw new Exception('201');
-        }
-        // on cherche l'user associé à l'email
-        $user = User::getUserByEmail($email);
-        if (empty($user)){
-            throw new Exception("102");
-        }
+            if(empty($_POST['email']) || empty($post['password'])){
+                throw new Exception("101");
+            }
+            //on filtre l'email
+            $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
+            if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                throw new Exception('201');
+            }
 
-        if (!password_verify($post['password'], $user['password'])) {
-            throw new exception("202");
-        }
-        if (!$resultArray["bool"]) {
-            throw new Exception("500");
-        }
+            // on cherche l'user associé à l'email
+            $user = User::getUserByEmail($email);
+            if (!$user) {
+                throw new Exception("500");
+            }
 
-        unset($_SESSION['hiking_user']);
-        $_SESSION['hiking_user'] = array(
-            "uid" => $user['uid'],
-            "nickname" => $nickname,
-            "firstname" => $firstname,
-            "lastname" => $lastname,
-            "email" => $email
-        );
+            if (empty($user)){
+                throw new Exception("102");
+            }
 
-        header('Location: /');
-    }catch (Exception $e){
-        header('Location: /login?error_value=' . $e->getMessage());
-    }
+            if (!password_verify($post['password'], $user['password'])) {
+                throw new exception("202");
+            }
+
+            unset($_SESSION['hiking_user']);
+            $_SESSION['hiking_user'] = array(
+                "uid" => $user['uid'],
+                "nickname" => $user['nickname'],
+                "firstname" => $user['firstname'],
+                "lastname" => $user['lastname'],
+                "email" => $email
+            );
+
+            header('Location: /');
+        } catch (Exception $e) {
+            header('Location: /login?error_value=' . $e->getMessage());
+        }
     }
 
     public function showUserProfile(): void
     {
-        $user = User::getUserById($_SESSION['hiking_user']['uid']);
-
-        if (isset($_GET['modify'])) {
-            $modify = true;
-        }
+        $hikes = User::getHikeByUserId($_SESSION['hiking_user']['uid']);
         include_once "views/layout/header.view.php";
         include_once "views/profile.view.php";
         include_once "views/layout/footer.view.php";

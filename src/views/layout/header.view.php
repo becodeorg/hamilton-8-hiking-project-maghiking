@@ -14,10 +14,10 @@
     <h1><a href="/">HighKing</a></h1>
     <ul>
         <?php if (!isset($_SESSION['hiking_user'])): ?>
-            <li><a href="/login"><i class="fa-regular fa-user"></i></a></li>
+            <li><a href="/login"><i class="fa-solid fa-user"></i></a></li>
             <li><a href="/register"><i class="fa-solid fa-user-plus"></i></a></li>
         <?php else: ?>
-            <li><a href="/profile"><i class="fa-solid fa-user-gear"></i></a></li>
+            <li><a href="/profile">Bonjour <?= $_SESSION['hiking_user']['nickname'] ?></a></li>
             <li><a href="/logout"><i class="fa-solid fa-right-from-bracket"></i></a></li>
         <?php endif; ?>
     </ul>

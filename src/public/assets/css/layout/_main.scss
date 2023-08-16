@@ -1,0 +1,10 @@
+main {
+  width: 100%;
+  min-height: calc(100vh - (10vh + 1.3em));
+  margin-top: calc(10vh + 1.3em);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10vh;
+}
