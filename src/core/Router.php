@@ -4,6 +4,7 @@ namespace core;
 
 use controllers\AuthController;
 use controllers\HikeController;
+use controllers\TagController;
 
 class Router
 {
@@ -52,10 +53,24 @@ class Router
                     $hikeController->creationHikesVerification($_POST);
                 }
                 break;
+            case "/creationtag":
+                $tagController = new TagController();
+                if (empty($_POST)) {
+                    $tagController->ShowCreationTag();
+                } else {
+                    $tagController->verificationCreationTag($_POST);
+                }
+                break;
             case "/hike":
                 $hikeController = new HikeController();
                 $hikeController->showHikeDetails(htmlspecialchars($_GET['hid']));
                 break;
+                case "/delete-hike":
+                    if (isset($_GET['hid'])) {
+                        $hikeController = new HikeController();
+                        $hikeController->deleteHike(htmlspecialchars($_GET['hid']));
+                    }
+                    break;
             case "/modify":
                 if (!empty($_GET)) {
                     if ($_GET['value'] == "account") {

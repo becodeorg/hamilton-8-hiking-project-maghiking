@@ -46,8 +46,9 @@ class Hike extends Database
             return ["bool" => false];
         }
     }
-    public function getHikeById($hid): array|bool {
 
+    public function getHikeById($hid): array|bool
+    {
         $sql = "SELECT Hikes.*, Users.nickname as creator FROM Hikes JOIN Users ON Hikes.uid = Users.uid WHERE hid = :hid";
         $result = Database::query($sql, ["hid" => $hid]);
         return $result->fetchAll();
@@ -56,6 +57,19 @@ class Hike extends Database
     public function insertHikesTags(array $param): bool
     {
         $sql = "INSERT INTO hikes_tags (hid, tid) VALUES (:hid, :tid)";
+        return Database::exec($sql, $param);
+    }
+
+    public function deleteHikeById(string|int $hid): bool
+    {
+        $sql = "DELETE FROM Hikes WHERE hid = :hid";
+        return Database::exec($sql, ["hid" => $hid]);
+    }
+
+    public function updateHikeById(string|int $hid, array $param): bool
+    {
+        $sql = "UPDATE Hikes SET name = :name, distance = :distance, duration = :duration, elevation_gain = :elevation_gain, description = :description WHERE hid = :hid";
+        $param['hid'] = $hid;
         return Database::exec($sql, $param);
     }
 }

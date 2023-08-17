@@ -12,8 +12,10 @@ return array(
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'controllers\\AuthController' => $baseDir . '/controllers/AuthController.php',
     'controllers\\HikeController' => $baseDir . '/controllers/HikeController.php',
+    'controllers\\TagController' => $baseDir . '/controllers/TagController.php',
     'core\\Router' => $baseDir . '/core/Router.php',
     'models\\Database' => $baseDir . '/models/Database.php',
     'models\\Hike' => $baseDir . '/models/Hike.php',
+    'models\\Tag' => $baseDir . '/models/Tag.php',
     'models\\User' => $baseDir . '/models/User.php',
 );

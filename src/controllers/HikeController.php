@@ -33,7 +33,7 @@ class HikeController extends Hike
             $error_value = htmlspecialchars($_GET['error_value']);
         }
 
-        $tags = Hike::getTagsByHikeId();
+        $tags = Hike::getTags();
 
         include_once "views/layout/header.view.php";
         include_once "views/creationHikes.view.php";
@@ -127,5 +127,22 @@ class HikeController extends Hike
     public function updateHikeVerification(array $post, string|int $hid): void
     {
 
+    }
+
+    public function deleteHike(string|int $hid): void
+    {
+        try {
+            $result = Hike::deleteHikeById($hid);
+
+            if ($result) {
+                header('Location: /'); 
+                exit; 
+            } else {
+                throw new Exception("Erreur lors de la suppression de la randonnée.");
+            }
+        } catch (Exception $e) {
+            header('Location: /?error=' . $e->getMessage());
+            exit;
+        }
     }
 }
