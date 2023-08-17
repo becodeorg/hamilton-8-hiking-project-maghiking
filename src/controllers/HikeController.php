@@ -119,6 +119,8 @@ class HikeController extends Hike
     {
         $hikeDetails = Hike::getHikeById($hid);
 
+        $tags = Hike::getTagsByHikeId($hid);
+
         include_once "views/layout/header.view.php";
         include_once "views/hike.view.php";
         include_once "views/layout/footer.view.php";

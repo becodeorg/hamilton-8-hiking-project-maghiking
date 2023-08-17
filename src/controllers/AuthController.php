@@ -154,9 +154,10 @@ class AuthController extends User
         }
     }
 
-    public function showUserProfile(): void
+    public function showUserProfile(string|int $uid): void
     {
-        $hikes = User::getHikeByUserId($_SESSION['hiking_user']['uid']);
+        $user = User::getUserById($uid);
+        $hikes = User::getHikeByUserId($uid);
         include_once "views/layout/header.view.php";
         include_once "views/profile.view.php";
         include_once "views/layout/footer.view.php";

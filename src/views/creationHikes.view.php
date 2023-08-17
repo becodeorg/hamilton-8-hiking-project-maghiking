@@ -7,7 +7,6 @@
     <fieldset>
         <label for="distance">Distance kilométrique</label>
         <input type="number" step="0.1" min="0" name="distance" id="distance" placeholder="200..." required>
-        <input type="text" name="name" id="name" placeholder="Nom..." required>
     </fieldset>
     <fieldset>
         <label for="duration">Durée</label>

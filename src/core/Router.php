@@ -43,7 +43,11 @@ class Router
                 break;
             case "/profile":
                 $authController = new AuthController();
-                $authController->showUserProfile();
+                if (empty($_GET)) {
+                    $authController->showUserProfile($_SESSION['hiking_user']['uid']);
+                } else {
+                    $authController->showUserProfile(htmlspecialchars($_GET['uid']));
+                }
                 break;
             case "/creation":
                 $hikeController = new HikeController();

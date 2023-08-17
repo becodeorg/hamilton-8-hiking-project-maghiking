@@ -33,7 +33,7 @@
             </fieldset>
             <?php $i++;
         endforeach; ?>
-        <button type="submit">Créer votre Hike</button>
+        <button type="submit">Modifier votre Hike</button>
     </form>
     <?php if (isset($error_value)):
         if ($error_value == "101"): ?>
