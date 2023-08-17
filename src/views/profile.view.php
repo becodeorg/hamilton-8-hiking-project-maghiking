@@ -14,6 +14,7 @@
                 extract($hike); ?>
                 <li>
                     <a href="/hike?hid=<?= $hid ?>"><?= $name ?></a>
+                    <a href="/modify?value=hike"><i class="fa-solid fa-pencil"></i></a>
                     <a href="/delete-hike?hid=<?= $hid ?>" onclick="return confirm('Etes-vous sûr de supprimer cette randonnée ?')"><i class="fa-regular fa-trash-can"></i></a>
 
                 </li>
