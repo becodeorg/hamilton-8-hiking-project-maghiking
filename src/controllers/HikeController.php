@@ -54,7 +54,8 @@ class HikeController extends Hike
                 empty($post['distance']) ||
                 empty($post['duration']) ||
                 empty($post['elevation_gain']) ||
-                empty($post['description'])
+                empty($post['description']) ||
+                empty($post['image_url'])
             ) {
                 throw new Exception("101");
             }
@@ -65,6 +66,8 @@ class HikeController extends Hike
             $duration = htmlspecialchars($post['duration']);
             $elevation_gain = htmlspecialchars($post['elevation_gain']);
             $description = htmlspecialchars($post['description']);
+            $image_url = htmlspecialchars($post['image_url']);
+
 
             $result = Hike::insertNewHike(
                 [
@@ -74,6 +77,7 @@ class HikeController extends Hike
                     "elevation_gain" => $elevation_gain,
                     "description" => $description,
                     "created_at" => date('Y-m-d H:i:s'),
+                    "image_url" => $image_url,
                     "uid" => $_SESSION['hiking_user']['uid']    
                 ]
             );

@@ -34,7 +34,7 @@ class Hike extends Database
 
     public function insertNewHike(array $param): array|bool
     {
-        $sql = "INSERT INTO Hikes (name, distance, duration, elevation_gain, description, created_at, uid) VALUES (:name, :distance, :duration, :elevation_gain, :description, :created_at, :uid)";
+        $sql = "INSERT INTO Hikes (name, distance, duration, elevation_gain, description, created_at, image_url, uid) VALUES (:name, :distance, :duration, :elevation_gain, :description, :created_at, :image_url, :uid)";
         $result = Database::exec($sql, $param);
         if ($result) {
             $lastInsertId = Database::lastInsertId();
