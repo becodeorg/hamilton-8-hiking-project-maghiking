@@ -2,7 +2,11 @@
     <?php if (!empty($hikes)):
         foreach ($hikes as $hike):
             extract($hike); ?>
+            <article class="card">
+            <img width="300px" src="<?= $image_url ?>" alt="photo-rando">
             <li><a href="/hike?hid=<?= $hid ?>"><?= $name ?></a></li>
+            </article>
+
         <?php endforeach;
     else: ?>
         <li>Aucun hike trouvé.</li>
