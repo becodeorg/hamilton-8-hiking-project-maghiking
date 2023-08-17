@@ -2,6 +2,7 @@
     extract($detail); ?>
     <h1><?= $name ?></h1>
     <ul>
+        <img width="800px" src="<?= $image_url ?>" alt="photo-rando">
         <li><?= $duration ?> <i class="fa-regular fa-clock"></i></li>
         <li><?= $distance ?> km</li>
         <li><?= $elevation_gain ?> mètres<i class="fa-solid fa-chart-line"></i></li>
