@@ -51,11 +51,10 @@ class Router
                 } else {
                     $hikeController->creationHikesVerification($_POST);
                 }
-
+                break;
             case "/hike":
                 $hikeController = new HikeController();
-                $hikeController->showHikeDetails(htmlspecialchars($_GET["hid"]));
-
+                $hikeController->showHikeDetails(htmlspecialchars($_GET['hid']));
                 break;
             case "/modify":
                 if (!empty($_GET)) {
@@ -69,9 +68,9 @@ class Router
                     } else if ($_GET['value'] == "hike") {
                         $hikeController = new HikeController();
                         if (empty($_POST)) {
-                            $hikeController->showUpdateHike();
+                            $hikeController->showUpdateHikeForm($_GET['hid']);
                         } else {
-                            $hikeController->updateHikeVerification($_POST);
+                            $hikeController->updateHikeVerification($_POST, $_GET['hid']);
                         }
                     }
                 }

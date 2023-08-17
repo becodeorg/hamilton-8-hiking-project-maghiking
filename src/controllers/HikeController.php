@@ -32,6 +32,9 @@ class HikeController extends Hike
         {
             $error_value = htmlspecialchars($_GET['error_value']);
         }
+
+        $tags = Hike::getTagsByHikeId();
+
         include_once "views/layout/header.view.php";
         include_once "views/creationHikes.view.php";
         include_once "views/layout/footer.view.php";
@@ -52,7 +55,7 @@ class HikeController extends Hike
                 empty($post['duration']) ||
                 empty($post['elevation_gain']) ||
                 empty($post['description'])
-            ){
+            ) {
                 throw new Exception("101");
             }
 
@@ -62,7 +65,6 @@ class HikeController extends Hike
             $duration = htmlspecialchars($post['duration']);
             $elevation_gain = htmlspecialchars($post['elevation_gain']);
             $description = htmlspecialchars($post['description']);
-            
 
             $result = Hike::insertNewHike(
                 [
@@ -82,24 +84,48 @@ class HikeController extends Hike
 
             $newHikeId = $result["hid"];
 
-            header('Location: /');
-            exit;
+            if (!empty($post['tag'])) {
+                foreach ($post['tag'] as $k => $v) {
+                    if ($v == "on") {
+                        Hike::insertHikesTags(
+                            [
+                                "hid" => $newHikeId,
+                                "tid" => (int) $k
+                            ]
+                        );
+                    }
+                }
+            }
 
+            header('Location: /hike?hid=' . $newHikeId);
+            exit;
         } catch (Exception $e){
             header('Location: /creation?error_value=' . $e->getMessage());
         }
+
     }
-    public function showUpdateHike(): void
+    public function showUpdateHikeForm(string|int $hid): void
     {
+        $hikeDetails = Hike::getHikeById($hid);
 
+        $tags = Hike::getTagsByHikeId($hid);
+
+        include_once "views/layout/header.view.php";
+        include_once "views/hikeModification.view.php";
+        include_once "views/layout/footer.view.php";
     }
 
-    public function showHikeDetails(string|int $hid) {
-
+    public function showHikeDetails(string|int $hid): void
+    {
         $hikeDetails = Hike::getHikeById($hid);
 
         include_once "views/layout/header.view.php";
         include_once "views/hike.view.php";
         include_once "views/layout/footer.view.php";
+    }
+
+    public function updateHikeVerification(array $post, string|int $hid): void
+    {
+
     }
 }
