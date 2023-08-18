@@ -12,12 +12,12 @@
 <body>
 <header>
     <h1><a href="/"><img src="assets/images/logo.svg" alt="Logo"></a></h1>
-    <section class="add">
+    <nav class="add">
     <?php if (isset($_SESSION['hiking_user'])): ?>
-        <a href="/creation" role="button"><i class="fa-solid fa-plus"></i> Hike</a>
-        <a href="/creationtag" role="button"><i class="fa-solid fa-plus"></i> Tag</a>
+        <a href="/creation">Ajouter un Hike</a>
+        <a href="/creationtag">Créer un Tag</a>
     <?php endif; ?>
-    </section>
+    </nav>
     <ul>
         <?php if (!isset($_SESSION['hiking_user'])): ?>
 

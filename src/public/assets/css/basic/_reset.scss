@@ -12,18 +12,20 @@
 body {
   width: 100vw;
   min-height: 100vh;
-  overflow: hidden;
-  background-image: url('../images/backgroundBody2.jpg');
-  background-size: cover;
+  overflow-x: hidden;
+  background: $white;
 }
-
 
 ul {
   list-style-type: none;
 }
 
-a:not(:hover) {
-  text-decoration: none;
+a {
+  color: $blue;
+
+  a:not(:hover) {
+    text-decoration: none;
+  }
 }
 
 button, input, textarea, fieldset {

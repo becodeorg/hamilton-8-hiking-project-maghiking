@@ -6,20 +6,21 @@ p.message {
   position: fixed;
   bottom: 0;
   left: 0;
-  color: #eeeeee;
+  color: $white;
   text-align: center;
   font-family: 'Ubuntu', sans-serif;
   
   &.error {
-    background: #ea6767;
+    background: $red;
   }
 
   &.warning {
-    background: #e7c673;
-    color: #181818;
+    background: $orange;
+    color: $black;
   }
 
   &.success {
-    background: #acec87;
+    background: $green;
+    color: $black;
   }
 }

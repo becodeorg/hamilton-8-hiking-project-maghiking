@@ -1,3 +1,9 @@
+@import "utils/_variables";
 @import "basic/_reset";
 @import "layout/_header", "layout/_main";
-@import "component/_form", "component/_section", "component/_message", "component/_cards";
+@import "component/_form",
+"component/_section",
+"component/_message",
+"component/_cards",
+"component/_empty_section",
+"component/_parallax";
