@@ -13,7 +13,11 @@ body {
   width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
+  background-image: url('../images/backgroundBody.jpg');
+  background-size: cover;
+
 }
+
 
 ul {
   list-style-type: none;
