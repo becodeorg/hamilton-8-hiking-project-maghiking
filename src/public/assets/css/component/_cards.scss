@@ -5,6 +5,11 @@ section.cards-wrapper {
   flex-direction: column;
   gap: 10vh;
   cursor: pointer;
+  &:hover{
+    li.card{
+      animation: translateCard 1s;
+    }
+  }
   
 
 
@@ -22,13 +27,15 @@ section.cards-wrapper {
       text-align: center;
       box-shadow: 0px 0px 2em rgba(0, 0, 0, 0.3);
       position: relative;
-      .utilisateurLink{
+
+
+      .hoverOpacityCard{
         opacity: 0;
       }
       &:hover{
         scale: (1.1);
         transition: 0.3s;
-        .utilisateurLink{
+        .hoverOpacityCard{
           opacity: 1;
           transition: 0.3s;
         }
@@ -69,5 +76,14 @@ section.cards-wrapper {
         }
       }
     }
+  }
+}
+
+@keyframes translateCard{
+  0%{
+    transform: translateX(-200%);
+  }
+  100%{
+    transform: translateX(0%);
   }
 }
