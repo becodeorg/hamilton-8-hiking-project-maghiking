@@ -1,9 +1,4 @@
-<section>
-<?php if (isset($_SESSION['hiking_user'])): ?>
-    <a href="/creation" role="button">Ajouter un Hike</a>
-    <a href="/creationtag" role="button">Ajouter un Tag</a>
-<?php endif; ?>
-</section>
+
 <section class="cards-wrapper">
     <?php if (!empty($hikes)):
         foreach ($hikes as $hike):
@@ -12,8 +7,8 @@
                 <img width="300px" src="<?= $image_url ?>" alt="photo-rando">
                 <h4><a href="/hike?hid=<?= $hid ?>"><?= $name ?></a></h4>
                 <p><?= $distance ?> km</p>
-                <p><?= $duration ?> h</p>
-                <a href="/profile?uid=<?= $uid ?>"><?= $nickname ?></a>
+                <p><?= $duration ?> <i class="fa-solid fa-clock"></i></p>
+                <a href="/profile?uid=<?= $uid ?>"><i class="fa-solid fa-user"></i> <?= $nickname ?></a>
             </div>
         <?php endforeach;
     else: ?>

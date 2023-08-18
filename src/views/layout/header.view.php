@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <h1><a href="/">HighKing</a></h1>
+    <h1><a href="/"><img src="assets/images/logo.svg" alt="Logo"></a></h1>
     <section class="add">
     <?php if (isset($_SESSION['hiking_user'])): ?>
         <a href="/creation" role="button"><i class="fa-solid fa-plus"></i> Hike</a>
