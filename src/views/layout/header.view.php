@@ -11,7 +11,7 @@
 </head>
 <body>
 <header>
-    <h1><a href="/"><img src="assets/images/logo.svg" alt="Logo"></a></h1>
+    <h1><a class="logo" href="/"><img src="assets/images/logo.svg" alt="Logo"></a></h1>
     <nav class="add">
     <?php if (isset($_SESSION['hiking_user'])): ?>
         <a href="/creation">Ajouter un Hike</a>
