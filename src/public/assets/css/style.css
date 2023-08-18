@@ -226,29 +226,6 @@ section.empty {
   section.empty h1, section.empty h4, section.empty p {
     backdrop-filter: blur(5px); }
 
-@keyframes animbg {
-  0% {
-    background-image: url("../images/background/bg0.png"); }
-  10% {
-    background-image: url("../images/background/bg1.png"); }
-  20% {
-    background-image: url("../images/background/bg2.png"); }
-  30% {
-    background-image: url("../images/background/bg3.png"); }
-  40% {
-    background-image: url("../images/background/bg4.png"); }
-  50% {
-    background-image: url("../images/background/bg5.png"); }
-  60% {
-    background-image: url("../images/background/bg6.png"); }
-  70% {
-    background-image: url("../images/background/bg7.png"); }
-  80% {
-    background-image: url("../images/background/bg8.png"); }
-  90% {
-    background-image: url("../images/background/bg9.png"); }
-  100% {
-    background-image: url("../images/background/bg10.png"); } }
 section.background_fixed {
   position: fixed;
   top: 0;
@@ -261,7 +238,7 @@ section.background_fixed {
   background-repeat: no-repeat;
   background-position: center;
   z-index: 10;
-  animation: animation_background 20s ease infinite alternate;
+  animation: animation_background 18s linear infinite alternate;
   transform: 0.5s; }
 
 @keyframes animation_background {
@@ -274,7 +251,7 @@ section.background_fixed {
   50% {
     background-image: url("../images/background/bg3.png"); }
   75% {
-    background-image: url("../images/background/bg4.png"); }
+    background-image: url("../images/background/bg6.png"); }
   100% {
     background-image: url("../images/background/bg5.png"); } }
 
