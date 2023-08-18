@@ -7,8 +7,13 @@ header {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: rgba(255, 255, 255, 0.603);
-
+  background-color: rgba(255, 255, 255, 0.493);
+  box-shadow: 0 0 13px rgba(255, 255, 255, 0.438);
+  padding: 3vh;
+  backdrop-filter: blur(8px);
+  img{
+    margin-left: 50px;
+  }
   ul {
     display: flex;
     gap: 1vw;
