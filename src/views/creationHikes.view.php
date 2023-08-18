@@ -22,8 +22,8 @@
         <textarea cols="20" rows="20" name="description" id="description" placeholder="Description..." required></textarea>
     </fieldset>
     <fieldset>
-        <label for="image_url">Insérez votre l'URL de votre image</label>
-        <input type="text" name="image_url" id="image_url">
+    <label for="image_url">Sélectionnez une image :</label>
+    <input type="file" name="image_url" id="image_url">
     </fieldset>
     <?php
     $i = 0;
