@@ -1,3 +1,9 @@
+<section>
+<?php if (isset($_SESSION['hiking_user'])): ?>
+    <a href="/creation" role="button">Ajouter un Hike</a>
+    <a href="/creationtag" role="button">Ajouter un Tag</a>
+<?php endif; ?>
+</section>
 <section class="cards-wrapper">
     <?php if (!empty($hikes)):
         foreach ($hikes as $hike):
@@ -14,9 +20,4 @@
         <p>Aucun hike trouvé.</p>
     <?php endif; ?>
 </section>
-<section>
-<?php if (isset($_SESSION['hiking_user'])): ?>
-    <a href="/creation" role="button">Ajouter un Hike</a>
-    <a href="/creationtag" role="button">Ajouter un Tag</a>
-<?php endif; ?>
-</section>
+
