@@ -10,4 +10,15 @@ section.background_fixed {
   background-repeat: no-repeat;
   background-position: center;
   z-index: 10;
+  animation: animbg 30s linear infinite;
+  transition: 0.3s;
+}
+
+
+@keyframes animbg{
+  @for $i from 0 through 10 {
+    #{$i * 10%} {
+      background-image: url('../images/background/bg' + $i + '.png');
+    }
+  }
 }

@@ -16,7 +16,7 @@
                     <h4><a href="/hike?hid=<?= $hid ?>"><?= $name ?></a></h4>
                     <p><?= $distance ?> km</p>
                     <p><?= $duration ?> <i class="fa-solid fa-clock"></i></p>
-                    <a href="/profile?uid=<?= $uid ?>"><i class="fa-solid fa-user"></i> <?= $nickname ?></a>
+                    <a href="/profile?uid=<?= $uid ?>" class="utilisateurLink"><i class="fa-solid fa-user"></i> <?= $nickname ?></a>
                 </div>
             </li>
         <?php endforeach;
