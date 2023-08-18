@@ -7,3 +7,8 @@ section {
   justify-content: center;
   gap: 3vh;
 }
+section.add{
+  width: 200px;
+  padding: 0;
+  flex-direction: row;
+}
