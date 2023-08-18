@@ -19,3 +19,8 @@
         <a href="/modify?value=hike&hid=<?= $hid ?>" role="button">Modifier le hike</a>
     <?php endif; ?>
 <?php endforeach; ?>
+<?php if (isset($error_value)): ?>
+    <?php if ($error_value == "500"): ?>
+        <p class="message error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+    <?php endif; ?>
+<?php endif; ?>

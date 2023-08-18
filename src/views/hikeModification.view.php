@@ -26,13 +26,19 @@
         </fieldset>
         <?php
         $i = 0;
-        foreach ($tags as $tag): extract($tag); ?>
+        foreach ($tags_delete as $tag): extract($tag); ?>
             <fieldset>
                 <label for="tag"><?= $name ?></label>
-                <input type="checkbox" name="tag[<?= $tid ?>]" id="tag">
+                <input type="checkbox" name="tag_delete[<?= $tid ?>]" id="tag" checked>
             </fieldset>
             <?php $i++;
         endforeach; ?>
+        <?php foreach ($tags_add as $tag): extract($tag); ?>
+            <fieldset>
+                <label for="tag"><?= $name ?></label>
+                <input type="checkbox" name="tag_add[<?= $tid ?>]" id="tag">
+            </fieldset>
+        <?php endforeach; ?>
         <button type="submit">Modifier votre Hike</button>
     </form>
     <?php if (isset($error_value)):
@@ -44,5 +50,6 @@
             <p class="message error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
         <?php else: echo $error_value; ?>
         <?php endif;
-    endif;
-endforeach; ?>
+    endif; ?>
+    <a href="/delete-hike?hid=<?= $hid ?>" onclick="return confirm('Etes-vous sûr de vouloir supprimer cette randonnée ?')">Supprimer le hike</a>
+<?php endforeach; ?>
