@@ -1,20 +1,3 @@
-section.background_fixed {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: transparent;
-  background-image: url('../images/backgroundBody2.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  z-index: 10;
-  animation: animbg 30s linear infinite;
-  transition: 0.3s;
-}
-
-
 @keyframes animbg{
   @for $i from 0 through 10 {
     #{$i * 10%} {
@@ -22,3 +5,41 @@ section.background_fixed {
     }
   }
 }
+
+section.background_fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: transparent;
+  background-image: url('../images/background/bg0.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  z-index: 10;
+  animation: animation_background 20s ease infinite alternate;
+  transform: 0.5s;
+}
+
+@keyframes animation_background{
+  0%{
+    background-image: url('../images/background/bg0.png');
+  }
+  10%{
+    background-image: url('../images/background/bg1.png');
+  }
+  25%{
+    background-image: url('../images/background/bg2.png');
+  }
+  50%{
+    background-image: url('../images/background/bg3.png');
+  }
+  75%{
+    background-image: url('../images/background/bg4.png');
+  }
+  100%{
+    background-image: url('../images/background/bg5.png');
+  }
+}
+
