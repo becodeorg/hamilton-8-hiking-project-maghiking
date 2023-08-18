@@ -3,6 +3,7 @@
 namespace controllers;
 
 use Exception;
+use models\Hike;
 use models\User;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
@@ -189,7 +190,12 @@ class AuthController extends User
     public function showUserProfile(string|int $uid): void
     {
         $user = User::getUserById($uid);
-        $hikes = User::getHikeByUserId($uid);
+        if ($_SESSION['hiking_user']['uid'] == '1' && !isset($_GET['uid'])) {
+            $hikes = (new Hike())->getAllHike();
+        } else {
+            $hikes = User::getHikeByUserId($uid);
+        }
+
         include_once "views/layout/header.view.php";
         include_once "views/profile.view.php";
         include_once "views/layout/footer.view.php";

@@ -1,6 +1,5 @@
 section.cards-wrapper {
   width: 100%;
-  min-height: 80vh;
   background: $white;
   display: flex;
   flex-direction: column;
@@ -12,24 +11,48 @@ section.cards-wrapper {
     grid-gap: 5vh;
 
     li.card {
-      height: 350px;
       border-radius: 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: .5rem;
+      gap: 2vh;
       text-align: center;
       box-shadow: 0px 0px 2em rgba(0, 0, 0, 0.3);
+      position: relative;
+
+      a:not(:hover) {
+        text-decoration: none;
+      }
 
       img {
         width: 100%;
         height: 250px;
-        border-top-left-radius: 10px;
-        border-top-right-radius: 10px;
+        border-radius: 10px 10px 0 0;
+        height: auto;
       }
 
       div {
-        padding: 1vh;
+        padding: 2vh 1vh;
+        display: flex;
+        flex-direction: column;
+        gap: 1vh;
+
+        &.float {
+          position: absolute;
+          top: .5rem;
+          right: .5rem;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 1rem;
+          background: $blue;
+          border-radius: 5px;
+          padding: 1vh;
+
+          a {
+            color: $white;
+          }
+        }
       }
     }
   }
