@@ -4,6 +4,7 @@ namespace controllers;
 
 use Exception;
 use models\User;
+use PHPMailer\PHPMailer\PHPMailer;
 
 class AuthController extends User
 {
@@ -73,6 +74,21 @@ class AuthController extends User
             if (!$result["bool"]) {
                 throw new Exception("500");
             }
+
+            $mail = new PHPMailer();
+            $mail->setFrom('info@hiking.com', 'Hiking');
+            $mail->addAddress($email, $nickname);
+
+            $mail->isHTML(true);
+            $mail->Subject = 'Bienvenue sur Hiking!';
+            $mail->Body =
+                '<html>
+                <body>
+                    <h3>Bienvenue sur Hiking!</h3>
+                    <p>Nous confirmons votre inscription sur Hiking.</p>
+                </body>
+            </html>';
+            $mail->send();
 
             unset($_SESSION['hiking_user']);
             $_SESSION['hiking_user'] = array(

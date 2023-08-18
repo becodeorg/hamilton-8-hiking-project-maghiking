@@ -17,11 +17,11 @@
     <?php else: ?>
         <h2>Hikes de <?= $nickname ?></h2>
     <?php endif; ?>
-    <ul>
+    <section class="cards-wrapper">
         <?php if (!empty($hikes)):
             foreach ($hikes as $hike):
                 extract($hike); ?>
-                <li>
+                <div class="card">
                     <?php if ($_SESSION['hiking_user']['uid'] == $uid): ?>
                         <a href="/hike?hid=<?= $hid ?>"><?= $name ?></a>
                         <a href="/modify?value=hike&hid=<?= $hid ?>"><i class="fa-solid fa-pencil"></i></a>
@@ -29,11 +29,13 @@
                     <?php else: ?>
                         <a href="/hike?hid=<?= $hid ?>"><?= $name ?></a>
                     <?php endif; ?>
-                </li>
+                </div>
             <?php endforeach;
             else: ?>
-            <li>Tu n'as créé aucun hike.</li>
+            <a href="/creation">Tu n'as créé aucun hike.</a>
         <?php endif; ?>
-    </ul>
+    </section>
 </section>
+<?php if ($_SESSION['hiking_user']['uid'] == $uid): ?>
 <a href="/modify?value=account" role="button">Modifier mes informations</a>
+<?php endif; ?>

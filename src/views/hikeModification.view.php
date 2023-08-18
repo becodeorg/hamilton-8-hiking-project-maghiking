@@ -8,7 +8,7 @@
         </fieldset>
         <fieldset>
             <label for="distance">Distance kilométrique</label>
-            <input type="number" step="0.1" min="0" name="distance" id="distance" value="<?= (int) $distance ?>" placeholder="200..." required>
+            <input type="number" step="0.01" min="0" name="distance" id="distance" value="<?= $distance ?>" placeholder="200..." required>
             <span>km</span>
         </fieldset>
         <fieldset>
@@ -17,7 +17,7 @@
         </fieldset>
         <fieldset>
             <label for="denivele">Dénivelé positif</label>
-            <input type="number" step="0.1" min="0" name="elevation_gain" id="elevation_gain" value="<?= (int) $elevation_gain ?>" placeholder="200..." required>
+            <input type="number" step="0.01" min="0" name="elevation_gain" id="elevation_gain" value="<?= $elevation_gain ?>" placeholder="200..." required>
             <span>Mètres</span>
         </fieldset>
         <fieldset>
@@ -37,9 +37,11 @@
     </form>
     <?php if (isset($error_value)):
         if ($error_value == "101"): ?>
-            <p class="error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
+            <p class="message error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
+        <?php elseif ($error_value == "401"): ?>
+            <p class="message warning">Aucune modification n'a été détecté.</p>
         <?php elseif ($error_value == "500"): ?>
-            <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+            <p class="message error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
         <?php else: echo $error_value; ?>
         <?php endif;
     endif;

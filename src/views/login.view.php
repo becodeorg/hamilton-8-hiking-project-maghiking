@@ -13,12 +13,14 @@
 
 <?php if (isset($error_value)):
     if ($error_value == "101"): ?>
-        <p class="error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
+        <p class="message error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
     <?php elseif ($error_value == "201"): ?>
-        <p class="error">Cette email n'est pas valide.</p>
+        <p class="message error">Cette email n'est pas valide.</p>
     <?php elseif ($error_value == "202"): ?>
-        <p class="error">Ce mot de passe n'est pas valide.</p>
+        <p class="message error">Ce mot de passe n'est pas valide.</p>
     <?php elseif ($error_value == "500"): ?>
-        <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+        <p class="message error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+    <?php elseif ($error_value == "601"): ?>
+        <p class="message warning">Veuillez d'abord vous connecter.</p>
     <?php endif;
 endif; ?>

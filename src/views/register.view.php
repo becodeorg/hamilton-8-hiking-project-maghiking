@@ -26,13 +26,13 @@
 </form>
 <?php if (isset($error_value)):
     if ($error_value == "101"): ?>
-        <p class="error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
+        <p class="message error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
     <?php elseif ($error_value == "102"): ?>
-        <p class="error">Il semblerait qu'un utilisateur utilisé déjà ce surnom ou cette email.</p>
+        <p class="message error">Il semblerait qu'un utilisateur utilisé déjà ce surnom ou cette email.</p>
     <?php elseif ($error_value == "201"): ?>
-        <p class="error">Cette email n'est pas valide.</p>
+        <p class="message error">Cette email n'est pas valide.</p>
     <?php elseif ($error_value == "500"): ?>
-        <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+        <p class="message error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
     <?php endif; ?>
 <?php endif; ?>
 

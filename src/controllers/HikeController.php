@@ -3,7 +3,9 @@
 namespace controllers;
 
 use Exception;
+use models\Database;
 use models\Hike;
+use models\User;
 
 class HikeController extends Hike
 {
@@ -110,6 +112,10 @@ class HikeController extends Hike
 
         $tags = Hike::getTagsByHikeId($hid);
 
+        if (isset($_GET['error_value'])) {
+            $error_value = $_GET['error_value'];
+        }
+
         include_once "views/layout/header.view.php";
         include_once "views/hikeModification.view.php";
         include_once "views/layout/footer.view.php";
@@ -128,7 +134,47 @@ class HikeController extends Hike
 
     public function updateHikeVerification(array $post, string|int $hid): void
     {
+        try {
+            /*
+             * 101 => input filed empty
+             * 401 => no modification set
+             */
+            if (
+                empty($post['name']) ||
+                empty($post['distance']) ||
+                empty($post['duration']) ||
+                empty($post['elevation_gain']) ||
+                empty($post['description'])
+            ) {
+                throw new Exception("101");
+            }
 
+            $hikeDetails = Hike::getHikeById($hid);
+
+            $name = htmlspecialchars($post['name']);
+            $distance = htmlspecialchars($post['distance']);
+            $duration = htmlspecialchars($post['duration']);
+            $elevation_gain = htmlspecialchars($post['elevation_gain']);
+            $description = htmlspecialchars($post['description']);
+
+            $result = Hike::updateHikeById(
+                [
+                    "name" => $name,
+                    "distance" => $distance,
+                    "duration" => $duration,
+                    "elevation_gain" => $elevation_gain,
+                    "description" => $description,
+                    "updated_at" => date('Y-m-d'),
+                    "hid" => $hid
+                ]
+            );
+
+            var_dump($result);
+
+            header('Location: /hike?hid=' . $hid);
+        } catch (Exception $e) {
+            header('Location: /modify?value=hike&hid=' . $hid . '&error_value=' . $e->getMessage());
+        }
     }
 
     public function deleteHike(string|int $hid): void
@@ -137,8 +183,7 @@ class HikeController extends Hike
             $result = Hike::deleteHikeById($hid);
 
             if ($result) {
-                header('Location: /'); 
-                exit; 
+                header('Location: /');
             } else {
                 throw new Exception("Erreur lors de la suppression de la randonnée.");
             }

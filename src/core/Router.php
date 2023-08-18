@@ -43,10 +43,14 @@ class Router
                 break;
             case "/profile":
                 $authController = new AuthController();
-                if (empty($_GET)) {
-                    $authController->showUserProfile($_SESSION['hiking_user']['uid']);
+                if (isset($_SESSION['hiking_user'])) {
+                    if (empty($_GET)) {
+                        $authController->showUserProfile($_SESSION['hiking_user']['uid']);
+                    } else {
+                        $authController->showUserProfile(htmlspecialchars($_GET['uid']));
+                    }
                 } else {
-                    $authController->showUserProfile(htmlspecialchars($_GET['uid']));
+                    header('Location: /login?error_value=601');
                 }
                 break;
             case "/creation":

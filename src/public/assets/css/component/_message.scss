@@ -1,0 +1,25 @@
+p.message {
+  width: 100%;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: .8em 0;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  color: #eeeeee;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+  
+  &.error {
+    background: #ea6767;
+  }
+
+  &.warning {
+    background: #e7c673;
+    color: #181818;
+  }
+
+  &.success {
+    background: #acec87;
+  }
+}

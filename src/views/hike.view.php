@@ -11,7 +11,7 @@
     <h3>Tags: </h3>
     <ul>
         <?php foreach ($tags as $tag): ?>
-            <li><?= $tag['name'] ?></li>
+            <li><a href="/hikes?tid=<?= $tag['tid'] ?>"><?= $tag['name'] ?></a></li>
         <?php endforeach; ?>
     </ul>
     <?php if ($_SESSION['hiking_user']['uid'] == $uid || $_SESSION['hiking_user']['uid'] == '1'): ?>

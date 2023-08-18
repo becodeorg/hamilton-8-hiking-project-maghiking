@@ -20,14 +20,14 @@ class Hike extends Database
 
     public function getAllHike(): array|bool
     {
-        $sql = "SELECT * FROM Hikes";
+        $sql = "SELECT Hikes.*, Users.nickname FROM Hikes JOIN Users ON Hikes.uid = Users.uid";
         $result = Database::query($sql);
         return $result->fetchAll();
     }
 
     public function getAllHikeByTag(string $tid): array|bool
     {
-        $sql = "SELECT Hikes.* FROM Hikes LEFT JOIN hikes_tags ON Hikes.hid = hikes_tags.hid WHERE hikes_tags.tid = :tid";
+        $sql = "SELECT Hikes.*, Users.uid as creator FROM Hikes LEFT JOIN hikes_tags ON Hikes.hid = hikes_tags.hid JOIN Users ON Hikes.uid = Users.uid WHERE hikes_tags.tid = :tid";
         $result = Database::query($sql, ["tid" => $tid]);
         return $result->fetchAll();
     }
@@ -66,10 +66,20 @@ class Hike extends Database
         return Database::exec($sql, ["hid" => $hid]);
     }
 
-    public function updateHikeById(string|int $hid, array $param): bool
+    public function updateHikeById(array $param): bool
     {
-        $sql = "UPDATE Hikes SET name = :name, distance = :distance, duration = :duration, elevation_gain = :elevation_gain, description = :description WHERE hid = :hid";
-        $param['hid'] = $hid;
+        $sql = "
+        UPDATE
+            Hikes
+        SET
+            name = :name,
+            distance = :distance,
+            duration = :duration,
+            elevation_gain = :elevation_gain,
+            description = :description,
+            updated_at = :updated_at
+        WHERE
+            hid = :hid";
         return Database::exec($sql, $param);
     }
 }

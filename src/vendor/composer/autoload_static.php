@@ -6,11 +6,32 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit0322ff46da612d2bd6965a085cf604a6
 {
+    public static $prefixLengthsPsr4 = array (
+        'P' => 
+        array (
+            'PHPMailer\\PHPMailer\\' => 20,
+        ),
+    );
+
+    public static $prefixDirsPsr4 = array (
+        'PHPMailer\\PHPMailer\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpmailer/phpmailer/src',
+        ),
+    );
+
     public static $classMap = array (
         'ComposerAutoloaderInit0322ff46da612d2bd6965a085cf604a6' => __DIR__ . '/..' . '/composer/autoload_real.php',
         'Composer\\Autoload\\ClassLoader' => __DIR__ . '/..' . '/composer/ClassLoader.php',
         'Composer\\Autoload\\ComposerStaticInit0322ff46da612d2bd6965a085cf604a6' => __DIR__ . '/..' . '/composer/autoload_static.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
+        'PHPMailer\\PHPMailer\\DSNConfigurator' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/DSNConfigurator.php',
+        'PHPMailer\\PHPMailer\\Exception' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/Exception.php',
+        'PHPMailer\\PHPMailer\\OAuth' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuth.php',
+        'PHPMailer\\PHPMailer\\OAuthTokenProvider' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/OAuthTokenProvider.php',
+        'PHPMailer\\PHPMailer\\PHPMailer' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/PHPMailer.php',
+        'PHPMailer\\PHPMailer\\POP3' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/POP3.php',
+        'PHPMailer\\PHPMailer\\SMTP' => __DIR__ . '/..' . '/phpmailer/phpmailer/src/SMTP.php',
         'controllers\\AuthController' => __DIR__ . '/../..' . '/controllers/AuthController.php',
         'controllers\\HikeController' => __DIR__ . '/../..' . '/controllers/HikeController.php',
         'controllers\\TagController' => __DIR__ . '/../..' . '/controllers/TagController.php',
@@ -24,6 +45,8 @@ class ComposerStaticInit0322ff46da612d2bd6965a085cf604a6
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixLengthsPsr4 = ComposerStaticInit0322ff46da612d2bd6965a085cf604a6::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit0322ff46da612d2bd6965a085cf604a6::$prefixDirsPsr4;
             $loader->classMap = ComposerStaticInit0322ff46da612d2bd6965a085cf604a6::$classMap;
 
         }, null, ClassLoader::class);

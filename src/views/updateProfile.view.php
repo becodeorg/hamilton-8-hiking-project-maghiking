@@ -16,17 +16,17 @@
 </form>
 <?php if (isset($error_value)):
     if ($error_value == "101"): ?>
-        <p class="error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
+        <p class="message error">Veuillez remplir les champs ci-dessus avec votre informations.</p>
     <?php elseif ($error_value == "202"): ?>
-        <p class="error">Ce mot de passe n'est pas valide.</p>
+        <p class="message error">Ce mot de passe n'est pas valide.</p>
     <?php elseif ($error_value == "500"): ?>
-        <p class="error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
+        <p class="message error">Il semblerait que l'on est rencontré une erreur. Veuillez essayer plus tard.</p>
     <?php elseif ($error_value == "301"): ?>
-        <p class="warning">Aucune modification n'a été détecté.</p>
+        <p class="message warning">Aucune modification n'a été détecté.</p>
     <?php endif; ?>
 <?php endif; ?>
 <?php if (isset($modify)): ?>
     <?php if ($modify == "true"): ?>
-        <p class="success">Vos informations on bien été modifié.</p>
+        <p class="message success">Vos informations on bien été modifié.</p>
     <?php endif; ?>
 <?php endif; ?>
