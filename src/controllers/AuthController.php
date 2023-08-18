@@ -5,6 +5,7 @@ namespace controllers;
 use Exception;
 use models\User;
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
 
 class AuthController extends User
 {
@@ -76,14 +77,24 @@ class AuthController extends User
             }
 
             try {
-                $mail = new PHPMailer();
-                $mail->setFrom('info@hiking.com', 'Hiking');
+                $mail = new PHPMailer(true);
+
+                $mail->SMTPDebug = 2;
+                $mail->isSMTP();
+                $mail->Host = 'smtp.gmail.com';
+                $mail->SMTPAuth = true;
+                $mail->Username = 'hikingproject8@gmail.com';
+                $mail->Password = 'cvfebcnrcyvcnjyd';
+                $mail->SMTPSecure = 'tls';
+                $mail->Port = 587;
+
+                $mail->setFrom('hikingproject8@gmail.com', 'Hiking');
                 $mail->addAddress($email, $nickname);
 
                 $mail->isHTML(true);
                 $mail->Subject = 'Bienvenue sur Hiking!';
                 $mail->Body =
-                    '<html>
+                    '<html lang="fr">
                         <body>
                             <h3>Bienvenue sur Hiking!</h3>
                             <p>Nous confirmons votre inscription sur Hiking.</p>
