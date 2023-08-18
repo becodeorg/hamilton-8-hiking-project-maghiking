@@ -16,6 +16,7 @@
         <h2>Tes Hikes</h2>
     <?php else: ?>
         <h2>Hikes de <?= $nickname ?></h2>
+
     <?php endif; ?>
     <section class="cards-wrapper">
         <?php if (!empty($hikes)):

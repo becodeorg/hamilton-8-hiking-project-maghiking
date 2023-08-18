@@ -3,6 +3,7 @@
         foreach ($hikes as $hike):
             extract($hike); ?>
             <div class="card">
+                <img width="300px" src="<?= $image_url ?>" alt="photo-rando">
                 <h4><a href="/hike?hid=<?= $hid ?>"><?= $name ?></a></h4>
                 <p><?= $distance ?> km</p>
                 <p><?= $duration ?> h</p>
