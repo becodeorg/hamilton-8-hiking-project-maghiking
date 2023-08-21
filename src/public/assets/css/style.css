@@ -102,6 +102,9 @@ main {
   position: relative;
   margin-top: 21vh;
   padding: 10vh 0;
+  box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.829);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.664), rgba(255, 255, 255, 0.664)), url("https://images.pexels.com/photos/869258/pexels-photo-869258.jpeg?auto=compress&cs=tinysrgb&w=1600") no-repeat center center fixed;
+  background-size: cover;
 }
 
 form {
@@ -121,23 +124,74 @@ form fieldset input, form fieldset textarea {
   padding: 1em;
   height: 100%;
   border: 2px solid #181818;
+  background: rgba(255, 255, 255, 0.842);
 }
 form fieldset label {
   position: absolute;
   top: -0.5em;
   left: 0.8em;
-  background: #f5f5f5;
+  background: rgba(255, 255, 255, 0.753);
+  backdrop-filter: blur(20px);
   padding: 0 0.3em;
+  border-top: 2px solid #181818;
+  border-left: 2px solid #181818;
 }
 form button {
   padding: 1em;
   border: 2px solid #181818;
   transition: all 0.3s ease;
+  background: #f5f5f5;
 }
 form button:hover {
   background: #181818;
   color: #f5f5f5;
   cursor: pointer;
+  border: 0.2px solid #f5f5f5;
+}
+form .container_tag {
+  width: 400px;
+}
+form .container_tag label {
+  padding: 0.2em 0.5em;
+  top: -15px;
+  left: 23px;
+  background: rgba(255, 255, 255, 0.925);
+}
+form .container_tag input {
+  cursor: pointer;
+  appearance: none;
+  border: 2px solid #181818;
+  width: 20px;
+  height: 20px;
+  background-color: #f5f5f5;
+  position: relative;
+}
+form .container_tag input::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 36px;
+  position: absolute;
+  top: 12px;
+  left: -4px;
+  transform: rotate(45deg);
+  background-color: #f5f5f5;
+}
+form .container_tag input::before {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 36px;
+  position: absolute;
+  top: 12px;
+  right: -4px;
+  transform: rotate(-45deg);
+  background-color: #f5f5f5;
+}
+form .container_tag input:checked {
+  background-color: black;
+  border: 1px solid #f5f5f5;
+  transition: 0.7s;
 }
 
 @media screen and (min-width: 768px) {
@@ -190,13 +244,14 @@ section.cards-wrapper {
   gap: 10vh;
   cursor: pointer;
 }
-section.cards-wrapper:hover li.card {
-  animation: translateCard 1s;
-}
 section.cards-wrapper ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 5vh;
+}
+section.cards-wrapper ul .card.animate {
+  animation: fadeIn 3s forwards;
+  transition: 1s;
 }
 section.cards-wrapper ul li.card {
   border-radius: 10px;
@@ -207,6 +262,7 @@ section.cards-wrapper ul li.card {
   text-align: center;
   box-shadow: 0px 0px 2em rgba(0, 0, 0, 0.3);
   position: relative;
+  animation: translateCard 1s ease-in-out;
 }
 section.cards-wrapper ul li.card .hoverOpacityCard {
   opacity: 0;
@@ -297,6 +353,7 @@ section.background_fixed {
   background-position: center;
   z-index: 10;
   animation: animation_background 30s linear infinite alternate;
+  transform: 0.5s;
 }
 
 @keyframes animation_background {

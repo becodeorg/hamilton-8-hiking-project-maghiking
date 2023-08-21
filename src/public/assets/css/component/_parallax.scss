@@ -11,6 +11,7 @@ section.background_fixed {
   background-position: center;
   z-index: 10;
   animation: animation_background 30s linear infinite alternate;
+  transform: 0.5s;
 }
 
 @keyframes animation_background{

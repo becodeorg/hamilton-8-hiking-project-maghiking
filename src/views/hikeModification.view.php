@@ -34,7 +34,7 @@
             <?php $i++;
         endforeach; ?>
         <?php foreach ($tags_add as $tag): extract($tag); ?>
-            <fieldset>
+            <fieldset >
                 <label for="tag"><?= $name ?></label>
                 <input type="checkbox" name="tag_add[<?= $tid ?>]" id="tag">
             </fieldset>
