@@ -6,6 +6,7 @@ form {
   justify-content: center;
   gap: 2vh;
 
+
   fieldset {
     width: 100%;
     position: relative;
@@ -15,14 +16,19 @@ form {
       padding: 1em;
       height: 100%;
       border: 2px solid $black;
+      background: rgba(255, 255, 255, 0.842);
+      
     }
 
     label {
       position: absolute;
       top: -.5em;
       left: .8em;
-      background: $white;
+      background: rgba(255, 255, 255, 0.753);
+      backdrop-filter: blur(20px);
       padding: 0 .3em;
+      border-top: 2px solid $black;
+      border-left: 2px solid $black;
     }
   }
 
@@ -30,13 +36,63 @@ form {
     padding: 1em;
     border: 2px solid $black;
     transition: all .3s ease;
+    background: $white;
 
     &:hover {
       background: $black;
       color: $white;
       cursor: pointer;
+      border: 0.2px solid $white;
     }
   }
+  .container_tag{
+    width: 400px;
+    label{
+      padding: 0.2em .5em;
+      top: -15px;
+      left: 23px;
+      background: rgba(255, 255, 255, 0.925);
+    }
+      input{
+        cursor: pointer;
+        appearance: none;
+        border: 2px solid $black;
+        width: 20px;
+        height: 20px;
+        background-color: $white;
+        position: relative;
+      }
+      input::after{
+        content : "";
+        display: block;
+        height: 2px;
+        width: 36px;
+        position: absolute;
+        top: 12px;
+        left:-4px;
+        transform: rotate(45deg);
+        background-color:$white;
+      }
+      input::before{
+        content : "";
+        display: block;
+        height: 2px;
+        width: 36px;
+        position: absolute;
+        top: 12px;
+        right:-4px;
+        transform: rotate(-45deg);
+        background-color: $white;
+      }
+      input:checked{
+        background-color: black;
+        border: 1px solid $white;
+        transition: 0.7s;
+
+      }
+
+  }
+
 }
 
 @media screen and (min-width: 768px) {

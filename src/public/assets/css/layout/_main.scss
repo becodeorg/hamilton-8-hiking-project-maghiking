@@ -8,4 +8,7 @@ main {
   position: relative;
   margin-top: 21vh;
   padding: 10vh 0;
+  animation: animation_background 30s linear infinite alternate;
+  background-size: cover;
+  
 }

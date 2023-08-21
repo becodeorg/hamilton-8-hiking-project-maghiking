@@ -28,9 +28,9 @@
     <?php
     $i = 0;
     foreach ($tags as $tag): extract($tag); ?>
-        <fieldset>
+        <fieldset class="container_tag">
+            <input class="box" type="checkbox" name="tag[<?= $tid ?>]" id="tag">
             <label for="tag"><?= $name ?></label>
-            <input type="checkbox" name="tag[<?= $tid ?>]" id="tag">
         </fieldset>
     <?php $i++;
         endforeach; ?>
