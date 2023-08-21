@@ -23,7 +23,7 @@
     </fieldset>
     <fieldset>
     <label for="image_url">Sélectionnez une image :</label>
-    <input type="file" name="image_url" id="image_url">
+    <input type="url" name="image_url" id="image_url">
     </fieldset>
     <?php
     $i = 0;

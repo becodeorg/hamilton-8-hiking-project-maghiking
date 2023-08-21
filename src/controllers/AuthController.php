@@ -82,14 +82,14 @@ class AuthController extends User
 
                 $mail->SMTPDebug = 2;
                 $mail->isSMTP();
-                $mail->Host = 'smtp.gmail.com';
+                $mail->Host = getenv('EMAIL_HOST');
                 $mail->SMTPAuth = true;
-                $mail->Username = 'hikingproject8@gmail.com';
-                $mail->Password = 'cvfebcnrcyvcnjyd';
+                $mail->Username = getenv('EMAIL_USERNAME');
+                $mail->Password = getenv('EMAIL_PASSWORD');
                 $mail->SMTPSecure = 'tls';
                 $mail->Port = 587;
 
-                $mail->setFrom('hikingproject8@gmail.com', 'Hiking');
+                $mail->setFrom(getenv('EMAIL_USERNAME'), 'Hiking');
                 $mail->addAddress($email, $nickname);
 
                 $mail->isHTML(true);

@@ -11,12 +11,18 @@
     <p>Créateur du hike: <a href="/profile?uid=<?= $uid ?>"><?= $creator ?></a></p>
     <h3>Tags: </h3>
     <ul>
+        <?php if (empty($tags)): ?>
+            <p>Ce hike n'a aucun tag.</p>
+        <?php else: ?>
         <?php foreach ($tags as $tag): ?>
             <li><a href="/hikes?tid=<?= $tag['tid'] ?>"><?= $tag['name'] ?></a></li>
         <?php endforeach; ?>
+        <?php endif; ?>
     </ul>
-    <?php if ($_SESSION['hiking_user']['uid'] == $uid || $_SESSION['hiking_user']['uid'] == '1'): ?>
-        <a href="/modify?value=hike&hid=<?= $hid ?>" role="button">Modifier le hike</a>
+    <?php if (isset($_SESSION['hiking_user'])): ?>
+        <?php if ($_SESSION['hiking_user']['uid'] == $uid || $_SESSION['hiking_user']['uid'] == '1'): ?>
+            <a href="/modify?value=hike&hid=<?= $hid ?>" role="button">Modifier le hike</a>
+        <?php endif; ?>
     <?php endif; ?>
 <?php endforeach; ?>
 <?php if (isset($error_value)): ?>

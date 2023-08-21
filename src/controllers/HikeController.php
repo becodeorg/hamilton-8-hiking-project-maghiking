@@ -113,9 +113,11 @@ class HikeController extends Hike
     public function showUpdateHikeForm(string|int $hid): void
     {
         $hikeDetails = Hike::getHikeById($hid);
-
         $tags_delete = Hike::getTagsByHikeId($hid);
         $tags_add = Hike::getTagsNotLink($hid);
+
+        var_dump($tags_delete);
+        var_dump($tags_add);
 
         if (isset($_GET['error_value'])) {
             $error_value = $_GET['error_value'];
