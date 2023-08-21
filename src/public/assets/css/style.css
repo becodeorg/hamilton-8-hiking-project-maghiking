@@ -87,7 +87,8 @@ main {
   position: relative;
   margin-top: 21vh;
   padding: 10vh 0;
-  animation: animation_background 30s linear infinite alternate;
+  box-shadow: inset 0px 0px 20px rgba(255, 255, 255, 0.829);
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.664), rgba(255, 255, 255, 0.664)), url("https://images.pexels.com/photos/869258/pexels-photo-869258.jpeg?auto=compress&cs=tinysrgb&w=1600") no-repeat center center fixed;
   background-size: cover; }
 
 form {
