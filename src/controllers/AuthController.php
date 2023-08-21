@@ -6,7 +6,6 @@ use Exception;
 use models\Hike;
 use models\User;
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 
 class AuthController extends User
 {
@@ -97,7 +96,7 @@ class AuthController extends User
                 $mail->Body =
                     '<html lang="fr">
                         <body>
-                            <h3>Bienvenue sur Hiking!</h3>
+                            <h3>Bienvenue sur Hiking, ' . $nickname . '!</h3>
                             <p>Nous confirmons votre inscription sur Hiking.</p>
                         </body>
                     </html>';
