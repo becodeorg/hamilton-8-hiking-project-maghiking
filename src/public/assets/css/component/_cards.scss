@@ -5,19 +5,16 @@ section.cards-wrapper {
   flex-direction: column;
   gap: 10vh;
   cursor: pointer;
-  &:hover{
-    li.card{
-      animation: translateCard 1s;
-    }
-  }
-  
 
 
   ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5vh;
-
+    .card.animate {
+      animation: fadeIn 3s forwards;
+      transition: 1s;
+    }
     li.card {
       border-radius: 10px;
       display: flex;
@@ -27,6 +24,7 @@ section.cards-wrapper {
       text-align: center;
       box-shadow: 0px 0px 2em rgba(0, 0, 0, 0.3);
       position: relative;
+      animation: translateCard 1s ease-in-out;
 
 
       .hoverOpacityCard{

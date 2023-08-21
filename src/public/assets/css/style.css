@@ -160,12 +160,13 @@ section.cards-wrapper {
   flex-direction: column;
   gap: 10vh;
   cursor: pointer; }
-  section.cards-wrapper:hover li.card {
-    animation: translateCard 1s; }
   section.cards-wrapper ul {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 5vh; }
+    section.cards-wrapper ul .card.animate {
+      animation: fadeIn 3s forwards;
+      transition: 1s; }
     section.cards-wrapper ul li.card {
       border-radius: 10px;
       display: flex;
@@ -174,7 +175,8 @@ section.cards-wrapper {
       gap: 2vh;
       text-align: center;
       box-shadow: 0px 0px 2em rgba(0, 0, 0, 0.3);
-      position: relative; }
+      position: relative;
+      animation: translateCard 1s ease-in-out; }
       section.cards-wrapper ul li.card .hoverOpacityCard {
         opacity: 0; }
       section.cards-wrapper ul li.card:hover {
